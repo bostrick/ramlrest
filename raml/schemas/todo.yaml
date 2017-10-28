@@ -1,0 +1,13 @@
+"$schema": http://json-schema.org/schema#
+id: http://todo/todo
+
+type: object
+properties:
+  text:
+    type: string
+  due_date:
+    type: string
+  priority:
+    type: integer
+    minimum: 0
+    maximum: 10

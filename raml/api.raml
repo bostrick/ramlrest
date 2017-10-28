@@ -3,6 +3,8 @@ title: RAML described content management
 version: v1
 baseUri: http://{host}/api/{version}
 types:
+  todo: !include schemas/todo.yaml
+  todolist: !include schemas/todolist.yaml
   TestType:
     type: object
     properties:
@@ -12,6 +14,14 @@ types:
         type: object
         properties:
           count: number
+/todolist:
+  get:
+  /{item_id}:
+    get:
+    /todo:
+      get:
+      /{item_id}:
+        get:
 /helloWorld:
   get:
     responses:

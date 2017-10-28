@@ -1,0 +1,6 @@
+"$schema": http://json-schema.org/schema#
+id: http://todo/todo
+
+type: array
+items:
+  "$ref": http://todo/todo
