@@ -10,6 +10,7 @@ class RamlDumper(object):
     REGISTRY=[]
 
     omit_list = "config root parent".split()
+    non_iter_iterables= (str, dict)
 
     @classmethod
     def register(cls, subclass):
@@ -42,8 +43,11 @@ class RamlDumper(object):
 
                 yield "_type", self.context.__class__.__name__
 
+                if key == 'config':
+                    import pdb; pdb.set_trace()
                 # note this forces all iterables to a list...
-                if hasattr(value, "__iter__") and not isinstance(value, str):
+                nii = self.non_iter_iterables
+                if hasattr(value, "__iter__") and not isinstance(value, nii):
                     yield key, [ self.dump(v) for v in value ]
                 else:
                     yield key, self.dump(value)
@@ -55,8 +59,8 @@ class RamlDumper(object):
 class RamlRootNodeDumper(RamlDumper):
 
     klass = ramlfications.raml.RootNode
-    omit_list = RamlDumper.omit_list[:]
-    omit_list.remove('config')
+    #omit_list = RamlDumper.omit_list[:]
+    #omit_list.remove('config')
 
 @RamlDumper.register
 class RamlBaseNodeDumper(RamlDumper):
