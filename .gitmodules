@@ -1,0 +1,3 @@
+[submodule "zode"]
+	path = zode
+	url = git@github.com:RedHatTraining/zode.git
