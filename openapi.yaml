@@ -1,0 +1,36 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Red Hat Training OLE Framework
+  description: API for Red Hat Training OLE Framework
+  contact:
+    name: OLE Platform team
+    email: rht_platform@redhat.com
+    url: https://rol.redhat.com
+servers:
+  - url: https://api.ole.redhat.com/{version}
+paths:
+  /mailing:
+    get:
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: array
+                items: object
+  /mailing/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: ID of object to fetch
+        required: true
+        schema:
+          type: string
+    get:
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: object

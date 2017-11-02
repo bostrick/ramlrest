@@ -1,0 +1,13 @@
+
+<h3>mailing {{item['doc_id']}} {{item['@timestamp']}}</h3>
+<h4>status: {{item.status}}</h4>
+
+<table><tbody>
+{% for key in item.headers %}
+  <tr><th align="right">{{key}}:</th><td>{{item.headers[key]}}</td>
+{% endfor %}
+</tbody></table>
+
+{% for content in item.content %}
+  {% autoescape false %} {{content.body}} {% endautoescape %}
+{% endfor %}
