@@ -21,7 +21,7 @@ class DefaultRamlView(RamlView):
 
     def __call__(self):
         import pdb; pdb.set_trace()
-        return Response('hello world')
+        return Response('hello from %s'%self.context.__name__)
 
 @view_config(name='debug', renderer='yaml', request_method='GET')
 class DebugRamlView(RamlView):
